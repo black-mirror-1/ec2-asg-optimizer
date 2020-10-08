@@ -6,7 +6,7 @@ import "io"
 type Config struct {
 	LogFile        io.Writer
 	LogFlag        int
-	Region         string
+	Region         string `default:"us-west-2"`
 	EnableDebug    bool
-	EnabledRegions string
+	EnabledRegions string `defalut:"us-east-1,us-west-2"`
 }
