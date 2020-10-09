@@ -94,19 +94,7 @@ func (r *region) processRegion() {
 
 	if r.enabledASGs != nil {
 		for _, asg := range r.enabledASGs {
-			logger.Println("ASGName: ", *asg.AutoScalingGroupName, "ASG Spot Pools: ", asg.getSpotPoolCount())
-			// if group.isMixedInstancePolicy() {
-			// 	if group.MixedInstancesPolicy.LaunchTemplate != nil {
-			// 		if group.MixedInstancesPolicy.LaunchTemplate.Overrides != nil {
-			// 			fmt.Println("ASGName: ", *group.AutoScalingGroupName, ", #AvailabilityZone: ", len(group.AvailabilityZones), ", InstanceOverrides= ", len(group.MixedInstancesPolicy.LaunchTemplate.Overrides))
-			// 		}
-			// 	} else {
-			// 		fmt.Println("ASGName: ", *group.AutoScalingGroupName, ", No Launch Template")
-			// 	}
-			// } else {
-			// 	fmt.Println("ASGName: ", *group.AutoScalingGroupName, ", No MIG")
-			// }
-
+			logger.Println("ASGName: ", *asg.AutoScalingGroupName, "Instance Overrides: ", asg.getInstanceOverrideCount(), "Subnet Count: ", asg.getAZCount(), "ASG Spot Pools: ", asg.getSpotPoolCount())
 		}
 	}
 }
