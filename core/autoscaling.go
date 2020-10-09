@@ -29,16 +29,24 @@ func (a *autoScalingGroup) isMixedInstancePolicy() bool {
 
 func (a *autoScalingGroup) getInstanceOverrideCount() int {
 	if a.isMixedInstancePolicy() {
-		// if a.MixedInstancesPolicy.LaunchTemplate != nil {
-		// 	if a.MixedInstancesPolicy.LaunchTemplate.Overrides != nil {
-		// 		fmt.Println("ASGName: ", a.AutoScalingGroupName, ", #AvailabilityZone: ", len(a.AvailabilityZones), ", InstanceOverrides= ", len(a.MixedInstancesPolicy.LaunchTemplate.Overrides))
-		// 	}
-		// } else {
-		// 	fmt.Println("ASGName: ", a.AutoScalingGroupName, ", No Launch Template")
-		// }
 		fmt.Println("ASGName: ", a.AutoScalingGroupName, ", #AvailabilityZone: ", len(a.AvailabilityZones), ", InstanceOverrides= ", len(a.MixedInstancesPolicy.LaunchTemplate.Overrides))
 		return len(a.MixedInstancesPolicy.LaunchTemplate.Overrides)
 	}
 	fmt.Println("ASGName: ", a.AutoScalingGroupName, ", No MIG")
 	return 1
+}
+
+func (a *autoScalingGroup) isAZFlexible() bool {
+	if a.getAZCount() > 1 {
+		return true
+	}
+	return false
+}
+
+func (a *autoScalingGroup) getAZCount() int {
+	return len(a.AvailabilityZones)
+}
+
+func (a *autoScalingGroup) getSpotPoolCount() int {
+	return a.getInstanceOverrideCount() * a.getAZCount()
 }
