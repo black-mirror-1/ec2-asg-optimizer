@@ -41,6 +41,7 @@ func (r *region) enabled() bool {
 		// Allow both space- and comma-separated values for the region list.
 		csv := strings.Replace(r.conf.EnabledRegions, " ", ",", -1)
 		enabledRegions = strings.Split(csv, ",")
+		debug.Println("Enabled Regions: ", enabledRegions)
 	} else {
 		return true
 	}
