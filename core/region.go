@@ -94,7 +94,7 @@ func (r *region) processRegion() {
 
 	if r.enabledASGs != nil {
 		for _, asg := range r.enabledASGs {
-			logger.Println("ASGName: ", *asg.AutoScalingGroupName, "Instance Overrides: ", asg.getInstanceOverrideCount(), "Subnet Count: ", asg.getAZCount(), "ASG Spot Pools: ", asg.getSpotPoolCount())
+			logger.Println("Region: ", r.name, "ASGName: ", *asg.AutoScalingGroupName, "Instance Overrides: ", asg.getInstanceOverrideCount(), "Subnet Count: ", asg.getAZCount(), "ASG Spot Pools: ", asg.getSpotPoolCount())
 		}
 	}
 }
