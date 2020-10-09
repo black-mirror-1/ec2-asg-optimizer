@@ -94,7 +94,7 @@ func (r *region) processRegion() {
 
 	if r.enabledASGs != nil {
 		for _, asg := range r.enabledASGs {
-			logger.Println("ASGName: ", asg.AutoScalingGroupName, "ASG Spot Pools: ", asg.getSpotPoolCount())
+			logger.Println("ASGName: ", *asg.AutoScalingGroupName, "ASG Spot Pools: ", asg.getSpotPoolCount())
 			// if group.isMixedInstancePolicy() {
 			// 	if group.MixedInstancesPolicy.LaunchTemplate != nil {
 			// 		if group.MixedInstancesPolicy.LaunchTemplate.Overrides != nil {

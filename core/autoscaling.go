@@ -29,7 +29,6 @@ func (a *autoScalingGroup) isMixedInstancePolicy() bool {
 
 func (a *autoScalingGroup) getInstanceOverrideCount() int {
 	if a.isMixedInstancePolicy() {
-		fmt.Println("ASGName: ", a.AutoScalingGroupName, ", #AvailabilityZone: ", len(a.AvailabilityZones), ", InstanceOverrides= ", len(a.MixedInstancesPolicy.LaunchTemplate.Overrides))
 		return len(a.MixedInstancesPolicy.LaunchTemplate.Overrides)
 	}
 	fmt.Println("ASGName: ", a.AutoScalingGroupName, ", No MIG")
